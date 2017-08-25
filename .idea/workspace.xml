@@ -40,9 +40,11 @@
       <file leaf-file-name="travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="46">
+              <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding>
+                <marker date="1503660996892" expanded="true" signature="18:42" ph="python: &lt;4 items&gt;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -493,7 +495,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="105" y="72" width="1101" height="514" extended-state="0" />
+    <frame x="105" y="72" width="1101" height="514" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30959165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -661,9 +663,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="46">
+          <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <marker date="1503660996892" expanded="true" signature="18:42" ph="python: &lt;4 items&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>
