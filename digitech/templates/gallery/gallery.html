@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Our Activities</h3>
+            <p>Digitech Power Limited is a highly performing power industry ever existed in history. We focus
+              at providing convenience and better custommer care fascility to the general public and to find the
+              solutions to common problem by ensuring all user information reaches us and necessary
+              measures are taken</p>
+            <h3>Our Vision</h3>
+            <p>We intent to expand our services throught the country and help reduce unnecessary costs
+                associated with usual queues in service delivery among our customers. The assets and
+                fascility to the general public and to find the
+              solutions to common problem by ensuring all user information reaches us and necessary
+              measures are taken</p>
+        </div>
+        <div class=" col-sm-9">
+            {% include 'gallery/projects.html' %}
+        </div>
+    </div>
+{% endblock main %}
+
+{% block logos %}
+{% endblock logos %}

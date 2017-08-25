@@ -1,0 +1,11 @@
+<h1>Hello world</h1>
+{{ project.name }}<br>
+{{ project.description}} <br>
+{% if project.image %}
+<img src="{{ object.image.url }}" alt="" style="height: 200px;"> <br>
+{% endif %}
+
+{% for project in project_list %}
+<a href="{{ project.get_absolute_url }}"> {{ project }}</a>
+<br>
+{% endfor %}

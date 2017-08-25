@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load staticfiles i18n %}
+
+{% block head %}
+{#  <link href="{% static 'css/signup.css' %}" rel="stylesheet">#}
+{% endblock head %}
+
+{% block main %}
+
+{% if not user.first_name or not user.last_name or not user.email or not user.profile.phone or not user.profile.id_no %}
+    <div class="container">
+      <div class="starter-template">
+        <h1>Sorry for This!!</h1>
+        <p class="lead">Some of your details are mising. It seems You have not yet completed your profile.<br>
+            Please update your profile before you proceed.
+            <a class="btn btn-xs btn-default" href="{% url 'profiles:edit_self' %}">Update Profile</a>
+        </p>
+      </div>
+    </div><!-- /.container -->
+{% else %}
+
+{% if user.application %}
+{% include 'apply/applied.html' %}
+{% else %}
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <h1 class="logo"><a href="{% url 'home' %}">Digitech Power Application</a></h1>
+    <div class="signup">
+    <h2>Make an application</h2>
+    <form action="{% url 'apply:apply' %}" method="post" role="form">
+      {% csrf_token %}
+    {{ form.media }}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-lg btn-primary btn-block">{% trans 'Send Application' %}</button>
+        <br><br>
+    </form>
+  </div>
+    </div>
+    {% endif %}
+    {% endif %}
+{% endblock main %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'login' %}" role="button">Log in</a>
+<a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>Digitech Power Ltd.</h1>
+          <p>This is where you will get all of your power solutions.</p>
+            {% if not user.is_authenticated %}
+	  <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up for Free!</a>
+            {% else %}
+	  <a class="btn btn-warning" href="{% url 'apply:apply' %}" role="button">Apply For Power</a>
+            {% endif %}
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock splash %}
+
+{% block main %}
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>About us</h2>
+      <p>Digitech Power Limited is a highly performing power industry ever existed in history. We focus
+      at providing convenience and better custommer care fascility to the general public and to find the
+      solutions to common problem by ensuring all user information reaches us and necessary
+          measures are...</p>
+      <p><a class="btn btn-primary" href="{% url 'about' %}" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Environment</h2>
+        <p>We concentrate much on environmental improvement and sollutions by making sure all our
+        customers live in an environment friendly area. We provide funding for tree planting, irrigation
+        schemes and all issues pertaining to ensuring user friendly and hygean. We are setting a plants
+        in most rural areas including ...
+        </p>
+      <p><a class="btn btn-primary" href="{% url 'about' %}" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Users Online</h2>
+        {% for person in online %}
+            <h5 style="color: blue">{{ forloop.counter }}. {{ person.user }}({{ person.user.email }})</h5>
+        {% endfor %}
+        <p><a class="btn btn-primary" href="{% url 'about' %}" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}
+
+{% block logos %}
+    {% include 'logos.html' %}
+{% endblock logos %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
+

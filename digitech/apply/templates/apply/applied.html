@@ -1,0 +1,172 @@
+{% load crispy_forms_tags %}
+
+{% load staticfiles i18n %}
+
+<div class="row">
+    <h3 class="has-error">You have Already Apllied for Power</h3>
+    <p>Your current details are shown below: <br>
+    </p>
+    <p>If you have errors you can
+        <a class="btn btn-default" href="{{ user.application.get_absolute_url }}u">Update Application</a>
+        <a class="btn btn-warning" href="{% url 'profiles:edit_self' %}">Update Profile</a>
+    </p>
+    <div class="col-sm-8">
+        <div class="panel panel-default"  style="font-size: 1.1em;">
+        <div class="panel-heading panel-primary">
+            <strong><u>{{ user|upper }}</u></strong>
+            <img src="{{ user.profile.get_picture }}" alt="" height="30" class="img-circle pull-right">
+            <br>
+            <small>Aplied on <i>{{ user.application.update }}</i></small>
+            <br>
+            <hr>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                First Name:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.first_name %}
+                {{ user.first_name }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> First name is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Last Name:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.last_name %}
+                {{ user.last_name }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Last name is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Email:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.email %}
+                {{ user.email }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Email is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Phone:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.profile.phone %}
+                +254{{ user.profile.phone }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Phone number is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Residence:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.profile.residence %}
+                {{ user.profile.residence }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Your Residence is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                ID No:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.profile.id_no %}
+                {{ user.profile.id_no }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> ID is required
+            {% endif %}
+        </div>
+        </div>
+{#        <div class="row">#}
+{#        <div class="col-xs-5">#}
+{#            <strong>#}
+{#                Nearest Transformer:#}
+{#            </strong>#}
+{#        </div>#}
+{#        <div class="col-xs-7">#}
+{#            {% if user.application.transformer %}#}
+{#                {{ user.application.transformer }}#}
+{#            {% else %}#}
+{#                <i class="fa fa-warning danger" style="color: red;"></i> A transformer is required#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        </div>#}
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Payment Method:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.application.payment_method %}
+                {{ user.application.payment_method }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Payment Method is required
+            {% endif %}
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-5">
+            <strong>
+                Receipt No:
+            </strong>
+        </div>
+        <div class="col-xs-7">
+            {% if user.application.receipt_no %}
+                {{ user.application.receipt_no }}
+            {% else %}
+                <i class="fa fa-warning danger" style="color: red;"></i> Receipt No. is required
+            {% endif %}
+        </div>
+        </div>
+{#        <div class="row">#}
+{#        <div class="col-xs-5">#}
+{#            <strong>#}
+{#                Distance from Transformer:#}
+{#            </strong>#}
+{#        </div>#}
+{#        <div class="col-xs-7">#}
+{#            {% if user.application.distance %}#}
+{#                {{ user.application.distance }}m#}
+{#            {% else %}#}
+{#                <i class="fa fa-warning danger" style="color: red;"></i> Distance is required#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        </div>#}
+
+        </div>
+        <a href="{% url 'apply:pdf' %}">
+           View Application <i class="fa fa-eye fa-2x"></i>
+        </a>
+        <p><a href=" {% url 'apply:pdf' %}?download={{ user.id }}">
+           Print The application <i class="fa fa-print fa-2x"></i>
+        </a></p>
+</div>
+</div>
+</div>

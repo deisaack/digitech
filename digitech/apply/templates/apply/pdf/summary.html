@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html>
+     <head>
+         <title>New Title </title>
+         <style type="text/css">
+             body {
+                 font-weight: 200;
+                 font-size: 14px;
+             }
+             .header {
+                 font-size: 20px;
+                 font-weight: 100;
+                 text-align: center;
+                 color: #007cae;
+             }
+             .title {
+                 font-size: 22px;
+                 font-weight: 100;
+                /* text-align: right;*/
+                padding: 10px 20px 0px 20px;
+             }
+             .title span {
+                 color: #007cae;
+             }
+             .details {
+                 padding: 10px 20px 0px 50px;
+                 text-align: left !important;
+                 /*margin-left: 40%;*/
+             }
+             .hrItem {
+                 border: none;
+                 height: 1px;
+                 /* Set the hr color */
+                 color: #333; /* old IE */
+                 background-color: #fff; /* Modern Browsers */
+             }
+             table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 3px;
+                text-align: left;
+            }
+         </style>
+     </head>
+     <body>
+         <div class='wrapper'>
+             <div class='header'>
+                 <p class='title'>{% include '_brandname.html' %} Organization Summary</p>
+             </div>
+         <div class="details">{% include '_address.html' %}
+            {{ today }}
+             <br><br>
+                      <table>
+                 <caption style="margin-left: 300px;"><centre>Users</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Name</th><th colspan="2">Email</th></tr>
+                {% for user in user_list %}
+                  <tr><td>{{ forloop.counter }}:</td>
+                      <td colspan="2">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }} [{{ user.username }}]</td>
+                    <td colspan="2">{{ user.email }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+             <br>
+             <table>
+                 <caption style="margin-left: 300px;"><centre>Power Applications</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Tranformer</th><th colspan="2">Applied by</th><th colspan="2">Date</th></tr>
+                {% for application in application_list %}
+                  <tr><td>{{ forloop.counter }}:</td> <td colspan="2">{{ application.transformer }}</td>
+                    <td colspan="2">{{ application.user.username }}</td><td colspan="2">{{ application.update }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+             <br>
+                      <table>
+                 <caption style="margin-left: 300px;"><centre>Transformer Installations</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Tranformer</th><th colspan="2">Location</th><th colspan="2">Date</th></tr>
+                {% for transformer in transformer_list %}
+                  <tr><td>{{ forloop.counter }}:</td> <td colspan="2">{{ transformer }}</td>
+                    <td colspan="2">{{ transformer.location }}</td><td colspan="2">{{ transformer.date }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+                      <br>
+             <table>
+                 <caption style="margin-left: 300px;"><centre>Machines</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Name</th><th colspan="2">No</th>
+                {% for machine in machinery_list %}
+                  <tr><td>{{ forloop.counter }}:</td> <td colspan="2">{{ machine.name }}</td>
+                    <td colspan="2">{{ machine.no }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+             <br>
+                      <br>
+             <table>
+                 <caption style="margin-left: 300px;"><centre>Employees</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Name </th><th colspan="2">Employee No</th><th colspan="2">Rank</th></tr>
+                {% for employee in employee_list %}
+                  <tr><td>{{ forloop.counter }}:</td> <td colspan="2">{{ employee.user.first_name }} {{ employee.user.last_name }}</td>
+                    <td colspan="2">{{ employee.id }}</td><td colspan="2">{{ employee.rank }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+             <br>             <br>
+             <table>
+                 <caption style="margin-left: 300px;"><centre>Projects</centre></caption>
+                 <tr><th>No:</th><th colspan="2">Name</th><th colspan="2">Starting Date</th><th colspan="2">Ending Date</th></tr>
+                {% for project in project_list %}
+                  <tr><td>{{ forloop.counter }}:</td> <td colspan="2">{{ project.name }}</td>
+                    <td colspan="2">{{ project.from_date }}</td><td colspan="2">{{ project.to_date }}</td>
+                  </tr>
+                {% endfor %}
+                </table>
+             <br>             <br>
+
+
+         </div>
+         </div>
+     </body>
+ </html>

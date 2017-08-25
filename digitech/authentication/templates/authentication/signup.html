@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load staticfiles i18n %}
+
+{% block head %}
+  <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <h1 class=""><a href="{% url 'home' %}">Digitech</a></h1>
+  <div class="signup">
+    <h2>Sign up for Digitech</h2>
+    <form action="{% url 'signup' %}" method="post" role="form">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        <div class="form-group{% if field.errors %} has-error{% endif %}">
+          <label for="{{ field.label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <span class="help-block">{{ field.help_text|safe }}</span>
+          {% endif %}
+          {% for error in field.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6LfzxiMUAAAAAFgWgBJSlpFGOY7UhVyb59zby0rn"></div>
+
+      <button type="submit" class="btn btn-lg btn-primary btn-block">{% trans 'Create an account' %}</button>
+        <br><br>
+        If you already have an account
+      <a type="submit" href="{% url 'login' %}">{% trans 'Login' %}</a>
+    </form>
+  </div>
+    </div>
+{% endblock main %}

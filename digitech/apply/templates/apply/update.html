@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load staticfiles i18n %}
+
+{% block head %}
+{#  <link href="{% static 'css/signup.css' %}" rel="stylesheet">#}
+{% endblock head %}
+
+{% block main %}
+{#    <a href="{% url 'apply:application-update' %}">mw hwwhjdfjhdjhdfjh</a>#}
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <h1 class="logo"><a href="{% url 'home' %}">Digitech Power Application</a></h1>
+    <div class="signup">
+    <h2>Make an application</h2>
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-lg btn-primary btn-block">{% trans 'Send Application' %}</button>
+        <br><br>
+    </form>
+        {% load countries %}
+    {% get_country 'KE' as country %}
+    {{ country.name }}
+  </div>
+    </div>
+{% endblock main %}

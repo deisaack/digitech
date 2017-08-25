@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html>
+     <head>
+         <title>{{ user }}</title>
+         <style type="text/css">
+             body {
+                 font-weight: 200;
+                 font-size: 14px;
+             }
+             .header {
+                 font-size: 20px;
+                 font-weight: 100;
+                 text-align: center;
+                 color: #007cae;
+             }
+             .title {
+                 font-size: 22px;
+                 font-weight: 100;
+                /* text-align: right;*/
+                padding: 10px 20px 0px 20px;
+             }
+             .title span {
+                 color: #007cae;
+             }
+             .details {
+                 padding: 10px 30px 0px 50px;
+                 text-align: left !important;
+                 /*margin-left: 40%;*/
+             }
+             .hrItem {
+                 border: none;
+                 height: 1px;
+                 /* Set the hr color */
+                 color: #333; /* old IE */
+                 background-color: #fff; /* Modern Browsers */
+             }
+             hr{margin-left: 100px;}
+{#            table {#}
+{#                width:100%;#}
+{#            }#}
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+         </style>
+
+
+     </head>
+     <body>
+         <div class='container'>
+             <div class='header'>
+                 <p class='title'>{% include '_brandname.html' %} POWER APPLICATION </p>
+             </div>
+             <div class="details">
+                 <img src="{% static 'logos/img/mu.png' %}" alt="">
+                 {% include '_address.html' %}
+                 Ref: MPL-0{{ user.id }}-{{ user.application.payment_method }}-0{{ user.application.id }}
+             <hr/>
+            <table class="details">
+                <th>Detail</th><th colspan="2">Description</th>
+                <tr><td>Applicant Name</td><td colspan="2">{{ user.first_name }} {{ user.last_name }}</td></tr>
+                <tr><td>Email</td><td colspan="2">{{ user.email }}</td></tr>
+                <tr><td>Naitional ID NO.</td><td colspan="2">{{ user.profile.id_no }}</td></tr>
+                <tr><td>Residence</td><td colspan="2">{{ user.profile.residence }}</td></tr>
+                <tr><td>Phone</td><td colspan="2">{{ user.profile.phone }}</td></tr>
+{#                <tr><td>Transformer</td><td colspan="2">{{ user.application.transformer }}</td></tr>#}
+{#                <tr><td>Distance from transformer</td><td colspan="2">{{ user.application.distance }}m</td></tr>#}
+                <tr><td>Date of Application</td><td colspan="2">{{ user.application.update }}</td></tr>
+                <tr><td>Payement Method</td><td colspan="2">{{ user.application.payment_method }}</td></tr>
+                <tr><td>Receipt No:</td><td colspan="2">{{ user.application.receipt_no }}</td></tr>
+                <tr><td>Amount Paid</td><td colspan="2">Ksh. {{ user.application.amount }}.00</td></tr>
+            </table>
+                    <p>This is an unofficial Document and is subject to sole ownership of &copy;{% include '_brandname.html' %} The official receipt will be provided
+                    after the installation is complete.</p>
+                 <p>We acknowledge your acceptance of our terms and conditions</p>
+                 <p>Name: ..............................Sign: ................... Date:.............</p>
+                 </div>
+
+             </div>
+         </div>
+     </body>
+ </html>
