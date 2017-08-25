@@ -3,15 +3,12 @@ language: python
 python:
   - 3.4
   - 3.5
-  - 3.6
-  - 2.7
 
 services: postgresql
 
 env:
   - DJANGO=1.10
   - DJANGO=1.11
-  - DJANGO=1.12
 
 before_install:
   - export DJANGO_SETTINGS_MODULE="digitech.settings"
